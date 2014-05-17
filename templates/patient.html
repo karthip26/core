@@ -138,7 +138,7 @@
       };
 
       recognition.onresult  = function(event) {
-        
+
         invokeCallbacks(callbacks.result);
         var results = event.results[event.resultIndex];
         $('#debug').html(JSON.stringify(event.results[event.resultIndex]));
@@ -216,7 +216,7 @@
     },
 
     // Set the language the user will speak in. If not called, defaults to 'en-US'.
-    // e.g. 'fr-FR' (French-France), 'es-CR' 
+    // e.g. 'fr-FR' (French-France), 'es-CR'
     setLanguage: function(language) {
       initIfNeeded();
       recognition.lang = language;
@@ -290,51 +290,51 @@ var painAvatars = [
 {% endfor %}
 ];
 var bodyParts = [{'name': 'head part', 'center': [100,35], 'radius':30, 'snomed_id': '123850002', 'status': 'gray', 'shape_type': 'circle'},
-               
+
                  // SPINE
-                 
+
                  {'name': 'neck structure', 'coordinates': [[90,70],[110,70],[110,90],[90,90]], 'snomed_id': '45048000', 'status': 'gray', 'shape_type': 'polygon'},
                  {'name': 'structureThoracic spine ', 'coordinates': [[90,95],[110,95],[110,160],[90,160]], 'snomed_id': '122495006', 'status': 'gray', 'shape_type': 'polygon'},
                  {'name': 'Lumbar spine structure', 'coordinates': [[90,165],[110,165],[110,220],[90,220]], 'snomed_id': '122496007', 'status': 'gray', 'shape_type': 'polygon'},
-                 
+
                 // RIGHT UPPER LIMB
-                 
+
                  {'name': 'R thorax structure ', 'coordinates': [[40,95],[85,95],[85,135]], 'snomed_id': '51872008', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of right shoulder region', 'center': [30,110], 'radius':10, 'snomed_id': '91774008', 'status': 'gray', 'shape_type': 'circle'},                
+                 {'name': 'Structure of right shoulder region', 'center': [30,110], 'radius':10, 'snomed_id': '91774008', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Right upper arm structure', 'coordinates': [[20,125],[40,125],[40,178],[20,178]], 'snomed_id': '368209003', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Right elbow region structure', 'center': [30,190], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Right elbow region structure', 'center': [30,190], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of right forearm', 'coordinates': [[20,200],[40,200],[40,240],[20,240]], 'snomed_id': '64262003', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of right wrist ', 'center': [30,252], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of right wrist ', 'center': [30,252], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of right hand', 'coordinates': [[20,265],[40,265],[40,275],[20,275]], 'snomed_id': '78791008', 'status': 'gray', 'shape_type': 'polygon'},
-                 
+
                  // R LOWER EXTREMITY
-                 
-                  {'name': 'Right hip region structure', 'center': [65,233], 'radius':12, 'snomed_id': '287579007', 'status': 'gray', 'shape_type': 'circle'},                
+
+                  {'name': 'Right hip region structure', 'center': [65,233], 'radius':12, 'snomed_id': '287579007', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of right thigh', 'coordinates': [[55,250],[75,250],[75,315],[55,315]], 'snomed_id': '11207009', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of right knee', 'center': [65,330], 'radius':10, 'snomed_id': '6757004', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of right knee', 'center': [65,330], 'radius':10, 'snomed_id': '6757004', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of right lower leg', 'coordinates': [[55,345],[75,345],[75,395],[55,395]], 'snomed_id': '32696007', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of right ankle', 'center': [65,410], 'radius':10, 'snomed_id': '6685009', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of right ankle', 'center': [65,410], 'radius':10, 'snomed_id': '6685009', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of right foot', 'coordinates': [[55,425],[75,425],[75,440],[55,440]], 'snomed_id': '7769000', 'status': 'gray', 'shape_type': 'polygon'},
-                 
+
                  // LEFT UPPER LIMB
-                 
+
                  {'name': 'L thorax structure ', 'coordinates': [[160,95],[115,95],[115,135]], 'snomed_id': '40768004', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of left shoulder region', 'center': [170,110], 'radius':10, 'snomed_id': '91775009', 'status': 'gray', 'shape_type': 'circle'},  
+                 {'name': 'Structure of left shoulder region', 'center': [170,110], 'radius':10, 'snomed_id': '91775009', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Left upper arm structure', 'coordinates': [[160,125],[180,125],[180,178],[160,178]], 'snomed_id': '368209003', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Left elbow region structure', 'center': [170,190], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Left elbow region structure', 'center': [170,190], 'radius':8, 'snomed_id': '368149001', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of left forearm', 'coordinates': [[160,200],[180,200],[180,240],[160,240]], 'snomed_id': '66480008', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of left wrist ', 'center': [170,252], 'radius':8, 'snomed_id': '5951000', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of left wrist ', 'center': [170,252], 'radius':8, 'snomed_id': '5951000', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of left hand', 'coordinates': [[160,265],[180,265],[180,275],[160,275]], 'snomed_id': '85151006', 'status': 'gray', 'shape_type': 'polygon'},
-                 
+
                  // LEFT LOWER LIMB
-                 
-                 {'name': 'Left hip region structure', 'center': [135,233], 'radius':12, 'snomed_id': '287679003', 'status': 'gray', 'shape_type': 'circle'}, 
+
+                 {'name': 'Left hip region structure', 'center': [135,233], 'radius':12, 'snomed_id': '287679003', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of left thigh', 'coordinates': [[125,250],[145,250],[145,315],[125,315]], 'snomed_id': '61396006', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of left knee', 'center': [135,330], 'radius':10, 'snomed_id': '82169009', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of left knee', 'center': [135,330], 'radius':10, 'snomed_id': '82169009', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of left lower leg', 'coordinates': [[125,345],[145,345],[145,395],[125,395]], 'snomed_id': '48979004', 'status': 'gray', 'shape_type': 'polygon'},
-                 {'name': 'Structure of left ankle', 'center': [135,410], 'radius':10, 'snomed_id': '51636004', 'status': 'gray', 'shape_type': 'circle'}, 
+                 {'name': 'Structure of left ankle', 'center': [135,410], 'radius':10, 'snomed_id': '51636004', 'status': 'gray', 'shape_type': 'circle'},
                  {'name': 'Structure of left foot', 'coordinates': [[125,425],[145,425],[145,440],[125,440]], 'snomed_id': '22335008', 'status': 'gray', 'shape_type': 'polygon'},
-                 
+
                 ];
 //var cycle = {'gray': 'red', 'red': 'green', 'green': 'gray'};
 var cycle = {'gray': 'red', 'red': 'gray'};
@@ -362,13 +362,13 @@ function getObject(x,y) {
             var verty = [];
             for (var j=0;j<c.length;j++) {
                 vertx.push(c[j][0]);
-                
+
             }
             for (var j=0;j<c.length;j++) {
                 verty.push(c[j][1]);
-                
+
             }
-            
+
             if (pnpoly(c.length, vertx, verty, x, y) == true) {
                 bodyParts[i]['status'] = cycle[bodyParts[i]['status']];
                 var ctx = document.getElementById("myCanvas").getContext("2d");
@@ -389,12 +389,12 @@ function getObject(x,y) {
                 ctx.fillStyle = c['status'];
                 ctx.beginPath();
                 ctx.arc(c['center'][0], c['center'][1], c['radius'], 0, 2 * Math.PI, false);
-                
+
                 ctx.closePath();
                 ctx.fill();
-            }             
+            }
         }
-    }      
+    }
 }
 // get mouse pos relative to canvas (yours is fine, this is just different)
 function getMousePos(canvas, evt) {
@@ -404,8 +404,8 @@ function getMousePos(canvas, evt) {
         y: evt.clientY - rect.top
     };
 }
-    
- 
+
+
 
    function startSlideshow() {
 window.t=0;
@@ -435,7 +435,7 @@ t = painAvatars.length;
 }
 $('.pain_avatar').hide();window.t-=1;$('#pain_avatar'+window.t).show();
 }
-    
+
 
 
     for (var i=painAvatars.length-1;i>-1;i--) {
@@ -451,13 +451,13 @@ $('.pain_avatar').hide();window.t-=1;$('#pain_avatar'+window.t).show();
     for (var i=0;i<painAvatars.length;i++) {
         $('#avatars').append('<div class="pain_avatar" id="pain_avatar'+i+'"><canvas id="myCanvas'+i+'" width="214" height="442" style="border:1px solid #000000;"></canvas><p>'+painAvatars[i]['datetime']+' ('+(i+1)+'/'+painAvatars.length+')</p></div>');
         for (var j=0; j<bodyParts.length; j++) {
-            
+
             var c = bodyParts[j];
             var ctx = document.getElementById("myCanvas"+i).getContext("2d");
             ctx.fillStyle = painAvatars[i]['json'][bodyParts[j]['snomed_id']];
             ctx.beginPath();
             if (c['shape_type'] == 'polygon') {
-                
+
                 ctx.moveTo(c['coordinates'][0][0], c['coordinates'][0][1]);
                 for (var k=1; k<c['coordinates'].length; k++) {
                     ctx.lineTo(c['coordinates'][k][0], c['coordinates'][k][1]);
@@ -497,17 +497,31 @@ $('#reset').click(function() {
     $(document).on("change", "input:checkbox", function(e) {
         //alert($(this).is(':checked')+$(this).attr('id'));
         if ( $(this).attr('attr') == 'is_controlled' ) {
-            $("#problem_"+$(this).attr('id')).removeClass();
-            $("#problem_"+$(this).attr('id')).addClass($(this).is(':checked').toString());
-            $.post('/save_encounter_event/', {'summary': 'Physician changed "is controlled" for problem "'+$('#problem_'+$(this).attr('id')).text()+'" to '+$(this).is(':checked'), 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
+			var objname = $(this).attr('for');
+            $("#"+objname+"_"+$(this).attr('id')).removeClass();
+            $("#"+objname+"_"+$(this).attr('id')).addClass($(this).is(':checked').toString());
 
+            var postdata = {};
+            postdata['id'] = $(this).attr('id');
+
+            var idtext = $('#' + objname + '_'+$(this).attr('id')).text();
+			var checkedvar = $(this).is(':checked');
+
+			postdata['value'] = checkedvar;
+			postdata['objname'] = objname;
+			if (objname == 'goal') {
+				$.post('/save_encounter_event/', postdata);
+			} else {
+            	$.post('/save_encounter_event/', {'id' : "'+postdata.id+'" ,'summary': 'Physician changed "is controlled" for problem "'+$('#'+objname+'_'+$(this).attr('id')).text()+'" to '+$(this).is(':checked'), 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}, 'objname' : objname});
+        	}
         }
         if ($(this).attr('attr') == 'goal' || $(this).attr('attr') == 'todo') {
             var target = $(this).attr('attr');
         } else {
             var target = 'problem';
         }
-        $.post('/change_status/', {'target': target, 'id': $(this).attr('id'), 'value': $(this).is(':checked'), 'attr': $(this).attr('attr')});
+        if ( $(this).attr('attr') != 'is_controlled'  && $(this).attr('for') != 'goal')
+        	$.post('/change_status/', {'target': target, 'id': $(this).attr('id'), 'value': $(this).is(':checked'), 'attr': $(this).attr('attr')});
     });
 function updateProblems() {
 $.get('/get_problems/{{ patient.id }}/', function (data) {
@@ -543,7 +557,7 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
             } else {
                 checked = '';
             }
-            status += '<li><input type="checkbox" attr="is_controlled" id="'+data[i]['problem_id']+'" '+checked+'/> Is controlled</li>';
+            status += '<li><input type="checkbox" attr="is_controlled" for="problem" id="'+data[i]['problem_id']+'" '+checked+'/> Is controlled</li>';
             if (data[i]['is_active'] == true) {
                 checked = ' checked ';
             } else {
@@ -556,29 +570,37 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
                 guidelines += '<li>'+data[i]['guidelines'][j]['guideline']+' <a href="'+data[i]['guidelines'][j]['reference_url']+'">'+data[i]['guidelines'][j]['reference_url']+'</a></li>';
             }
             guidelines += '</ul>';
-            
-            
-            
+
+
+
             // Goals: A problem may have zero to many associated with it.  Goals are a way for a patient to define and manage activities that they believe will be of value to them as an individual.  Goals are displayed with the red/green control state.  The goals that have not been set to 'accomplished' are displayed in the problem they are related to.  The note associated with a goal is to describe the motivation for adding that goal.  A GOAL DOES NOT HAVE TO BE ASSOCIATED WITH A PROBLEM.
             goals = '<ul id="goal_'+data[i]['problem_id']+'" title="goal_'+data[i]['problem_id']+'">';
-            goals += '<li><strong>Add:</strong> <input type="text" id="goal_input_'+data[i]['problem_id']+'" /><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="goal_input_'+data[i]['problem_id']+'" object_type="goal" class="submit_data" /></li>';
+            goals += '<li><strong>Add:</strong> <input type="text" id="goal_input_'+data[i]['problem_id']+'" /><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="goal_input_'+data[i]['problem_id']+'" object_type="goal" goal_id="'+data[i]+'" class="submit_data_goal" /></li>';
             for (var j=0;j<data[i]['goals'].length;j++) {
                 if (data[i]['goals'][j]['accomplished'] == true) {
                     checked = ' checked ';
                 } else {
                     checked = '';
                 }
-                notes = '<ul><li><strong>Add:</strong> <textarea id="note_input_for_goal_'+data[i]['goals'][j]['id']+'" /><input type="button" value="Submit" parent="'+data[i]['goals'][j]['id']+'" target="note_input_for_goal_'+data[i]['goals'][j]['id']+'" object_type="note_for_goal" class="submit_data" /></li>';
+                if (data[i]['goals'][j]['is_controlled'] == true) {
+                	ctrlchecked = ' checked ';
+	            } else {
+	                ctrlchecked = '';
+	            }
+
+            	chkiscontrolled = '<li><input type="checkbox" attr="is_controlled" for="goal" id="'+data[i]['goals'][j]['id']+'" '+ctrlchecked+'/> Is controlled</li>';
+
+                notes = '<ul>'+chkiscontrolled+'<li><strong>Add:</strong> <textarea id="note_input_for_goal_'+data[i]['goals'][j]['id']+'" /><input type="button" value="Submit" parent="'+data[i]['goals'][j]['id']+'" target="note_input_for_goal_'+data[i]['goals'][j]['id']+'" object_type="note_for_goal" class="submit_data" /></li>';
                 for (var k=0;k<data[i]['goals'][j]['notes'].length;k++) {
                     notes += '<li>(by '+data[i]['goals'][j]['notes'][k]['by']+') '+data[i]['goals'][j]['notes'][k]['note']+'</li>';
                 }
                 notes += '</ul>';
-                goals += '<li class="'+data[i]['goals'][j]['is_controlled']+'"><input type="checkbox" attr="goal" id="'+data[i]['goals'][j]['id']+'" '+checked+'/>'+data[i]['goals'][j]['goal']+notes+'</li>';
+                goals += '<li><div id="goal_'+data[i]['goals'][j]['id']+'" class="'+data[i]['goals'][j]['is_controlled']+'"><input type="checkbox" attr="goal" id="'+data[i]['goals'][j]['id']+'" '+checked+'/>'+data[i]['goals'][j]['goal']+'</div>'+notes+'</li>';
             }
             goals += '</ul>';
-            
-            
-            
+
+
+
             todos = '<ul id="todo_'+data[i]['problem_id']+'">';
             todos += '<li><strong>Add:</strong> <input type="text" id="todo_input_'+data[i]['problem_id']+'" /><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="todo_input_'+data[i]['problem_id']+'" object_type="todo" class="submit_data" /></li>';
 
@@ -592,7 +614,7 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
                 todos += '<li><input type="checkbox" attr="todo" id="'+data[i]['todos'][j]['id']+'" '+checked+'/>'+data[i]['todos'][j]['todo']+'</li>';
             }
             todos += '</ul>';
-            
+
             // Notes: both the physian and the patient have their own note space for documenting the problem.  A physician can only edit the physician's note, and a physician can ONLY view the patient's note.  A patient can ONLY view the physician's note, and a patient can edit a patient note.  The most recent version of a note is read from database each time the problem is visited.
             notes = '<table id="note_'+data[i]['problem_id']+'">';
             var role = "{% if user_role == 'admin' %}physician{% else %}{{ user_role }}{% endif %}";
@@ -601,30 +623,30 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
                 current_physician_note = data[i]['notes']['by_physician'][0]['note'];
                 if (role == 'physician') {
                     current_physician_note = '<textarea id="note_input_'+data[i]['problem_id']+'" value="'+current_physician_note+'">'+current_physician_note+'</textarea><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="note_input_'+data[i]['problem_id']+'" object_type="note" class="submit_data" />';
-                     
+
                 }
             } else {
                 if (role == 'physician') {
                     current_physician_note = '<textarea id="note_input_'+data[i]['problem_id']+'" value="'+current_physician_note+'">'+current_physician_note+'</textarea><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="note_input_'+data[i]['problem_id']+'" object_type="note" class="submit_data" />';
-                     
+
                 }
-                 
+
             }
             current_patient_note = '';
             if (data[i]['notes']['by_patient'].length > 0) {
                 current_patient_note = data[i]['notes']['by_patient'][0]['note'];
                 if (role == 'patient') {
                     current_patient_note = '<textarea id="note_input_'+data[i]['problem_id']+'" value="'+current_patient_note+'">'+current_patient_note+'</textarea><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="note_input_'+data[i]['problem_id']+'" object_type="note" class="submit_data" />';
-                     
+
                 }
             } else {
                 if (role == 'patient') {
                     current_patient_note = '<textarea id="note_input_'+data[i]['problem_id']+'" value="'+current_patient_note+'">'+current_patient_note+'</textarea><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="note_input_'+data[i]['problem_id']+'" object_type="note" class="submit_data" />';
-                     
-                } 
-                 
+
+                }
+
             }
-            
+
             //notes += '<tr><td colspan="2"><strong>Add:</strong> <textarea id="note_input_'+data[i]['problem_id']+'" value="'+current_physician_note+'">'+current_physician_note+'</textarea><input type="button" value="Submit" parent="'+data[i]['problem_id']+'" target="note_input_'+data[i]['problem_id']+'" object_type="note" class="submit_data" /></td></tr>';
             notes += '<tr><th>By physician</th><th>By patient</th></tr>';
             notes += '<tr><td>'+current_physician_note+'</td><td>'+current_patient_note+'</td></tr>';
@@ -632,8 +654,8 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
             //    notes += '<tr><td colspan="5">(by '+data[i]['notes'][j]['by']+') '+data[i]['notes'][j]['note']+'</td></tr>';
             //}
             notes += '</table>';
-            
-            
+
+
             var image_form = '<form action="/upload_image_to_problem/'+data[i]['problem_id']+'/" method="post" enctype="multipart/form-data"><label for="file">File:</label><input type="file" name="file" id="file"><input type="submit" name="submit" value="Submit"></form>';
             var images = '<ul>';
             for (var j=0;j<data[i]['images'].length;j++) {
@@ -642,7 +664,7 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
             images += '</ul>';
             $('#problems').append('<div id="problem_'+data[i]['problem_id']+'" class="'+data[i]['is_controlled']+'">'+data[i]['problem_name']+' <input type="button" value="Show problem" class="show_problem" target="problem_data_'+data[i]['problem_id']+'" problem="'+data[i]['problem_id']+'" /></div><div class="problem_data" id="problem_data_'+data[i]['problem_id']+'"><h4>Relationships</h4>'+relationships+'<h4>Status</h4>'+status+'<h4>Guidelines</h4>'+guidelines+'<h4>Goals</h4>'+goals+'<h4>ToDo</h4>'+todos+'<h4>Notes</h4>'+notes+'<h4>Images</h4>'+image_form+images+'</div>');
         }
-});   
+});
 }
     updateProblems();
     $(document).on('change', '.problem_parent', function() {
@@ -651,7 +673,7 @@ $.get('/get_problems/{{ patient.id }}/', function (data) {
 
          var type = 'mark_parent';
          var val = $(this).val();
-         
+
          $.post('/submit_data_for_problem/'+parent_id+'/', {'type': type, 'data': val}, function() {
              console.log('parent changed')
          });
@@ -665,36 +687,50 @@ $(document).on('click', '.submit_data', function() {
     $.post('/submit_data_for_problem/'+$(this).attr('parent')+'/', {'type': $(this).attr('object_type'), 'data': val}, function() {
         $('#'+type+'_'+parent_id).append('<li>'+val+'</li>');
     });}
-    $.post('/save_encounter_event/', {'summary': 'Physician added "'+$(this).attr('object_type')+'" to "": '+val, 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
+
+    $.post('/save_encounter_event/', {'objname':'problem','summary': 'Physician added "'+$(this).attr('object_type')+'" to "": '+val, 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
+
+});
+$(document).on('click', '.submit_data_goal', function() {
+    var parent_id = $(this).attr('parent');
+    var type = $(this).attr('object_type');
+    var val = $('#'+$(this).attr('target')).val();
+    if (val != '') { // send to server }
+    $.post('/submit_data_for_problem/'+$(this).attr('parent')+'/', {'type': $(this).attr('object_type'), 'data': val}, function(data) {
+            	chkiscontrolled = '<li><input type="checkbox" attr="is_controlled" for="goal" id="' + data + '" /> Is controlled</li>';
+                notes = '<ul>'+chkiscontrolled+'<li><strong>Add:</strong> <textarea id="note_input_for_goal_' + data + '" /><input type="button" value="Submit" parent="'+parent_id+'" target="note_input_for_goal_' + data + '" object_type="note_for_goal" class="submit_data" /></li>';
+        $('#'+type+'_'+parent_id).append('<li><div id="goal_'+data+'" class="false"><input type="checkbox" attr="goal" id="' + data + '"/>' + val + '</div>'+notes+'</li>');
+    });}
+    //$.post('/save_encounter_event/', {'summary': 'Physician added "'+$(this).attr('object_type')+'" to "": '+val, 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
 
 });
 if (annyang) {
   // Let's define our first command. First the text we expect, and then the function it should call
   var commands = {
     'go to problems': function() {
-      $(document).scrollTop( $("#problems").offset().top );  
+      $(document).scrollTop( $("#problems").offset().top );
     }, 'go to problem': function() {
-      $(document).scrollTop( $("#problems").offset().top );  
+      $(document).scrollTop( $("#problems").offset().top );
     }, 'go to homepage': function() {
       window.location = '/';
     }, 'go to pain avatar': function() {
-      $(document).scrollTop( $("#pain_avatar").offset().top );  
+      $(document).scrollTop( $("#pain_avatar").offset().top );
     }, 'go to problem *term': function(term) {
           for (var i=0; i<window.problems.length;i++) {
           //alert(window.problems[i]["problem_name"].toLowerCase());
               if (window.problems[i]["problem_name"].toLowerCase().indexOf(term.toLowerCase()) >= 0) {
-                
+
                   $('#problem_data_'+window.problems[i]['problem_id']).show();
-                  $(document).scrollTop( $('#problem_'+window.problems[i]['problem_id']).offset().top );  
+                  $(document).scrollTop( $('#problem_'+window.problems[i]['problem_id']).offset().top );
               }
           }
     }, 'go to problems *term': function(term) {
           for (var i=0; i<window.problems.length;i++) {
           //alert(window.problems[i]["problem_name"].toLowerCase());
               if (window.problems[i]["problem_name"].toLowerCase().indexOf(term.toLowerCase()) >= 0) {
-                
+
                   $('#problem_data_'+window.problems[i]['problem_id']).show();
-                  $(document).scrollTop( $('#problem_'+window.problems[i]['problem_id']).offset().top );  
+                  $(document).scrollTop( $('#problem_'+window.problems[i]['problem_id']).offset().top );
               }
           }
     }, 'add goal *goal': function(goal) {
@@ -702,7 +738,7 @@ if (annyang) {
 
           var object_type = 'goal';
           var val = goal;
-    
+
           $.post('/submit_data_for_problem/'+parent_id+'/', {'type': object_type, 'data': val}, function() {
               $('#'+object_type+'_'+parent_id).append('<li>'+val+'</li>');
           });
@@ -728,27 +764,27 @@ if (annyang) {
             concept_id = '';
         } else {
             concept_id = $('#concept_id').val();
-        } 
+        }
         $.post('/patient/{{ patient.id }}/add_problem/', {'problem_name': $('#problem_name').val(), 'concept_id': concept_id}, function (data) {
             updateProblems();
             $('#problem_name').val($('#problem_name').attr('default'));
             $('#concept_id').val($('#concept_id').attr('default'));
             $('#results').html('');
         });
-        $.post('/save_encounter_event/', {'summary': 'Physician added problem "'+$('#problem_name').val()+'"', 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
+        $.post('/save_encounter_event/', {'objname':'problem','summary': 'Physician added problem "'+$('#problem_name').val()+'"', 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
 
     });
     $('body').on('click', '.show_problem', function () {
         window.current_problem = $(this).attr('problem');
         $('.problem_data').hide();
         $('#'+$(this).attr('target')).show();
-        $(document).scrollTop( $('#problem_'+$(this).attr('problem')).offset().top );  
+        $(document).scrollTop( $('#problem_'+$(this).attr('problem')).offset().top );
         $(this).val('Hide problem');
         $(this).removeClass();
         $(this).addClass('hide_problem');
-        
-        // THIS IS THE ENCOUNTER REFERENCE: 
-        $.post('/save_encounter_event/', {'summary': 'Physician clicked on problem: "'+$('#problem_'+$(this).attr('problem')).text()+'"', 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
+
+        // THIS IS THE ENCOUNTER REFERENCE:
+        $.post('/save_encounter_event/', {'objname':'problem','summary': 'Physician clicked on problem: "'+$('#problem_'+$(this).attr('problem')).text()+'"', 'encounter_id': window.encounter_id, 'patient_id': {{ patient.id }}});
     });
     $('body').on('click', '.hide_problem', function () {
         window.current_problem = null;
@@ -771,7 +807,7 @@ if (annyang) {
             }
             $('#results').append('</ul>');
         });
- 
+
     },500);
             });
     $('body').on('click', '.select_concept', function() {
@@ -802,7 +838,7 @@ if (annyang) {
      green=controlled
      red= not controlled
 -->
-     
+
 <style>
 .true {
 background:green;
