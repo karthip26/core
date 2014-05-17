@@ -9,8 +9,10 @@ import traceback
 from django.contrib.auth.decorators import login_required
 import json
 import os
+
 #import pymedtermino.snomedct
 #pymedtermino.snomedct.done()
+
 class AccessLogMiddleware(object):
 
     def process_request(self, request):
@@ -25,7 +27,6 @@ def update(request):
 @login_required
 def home(request):
     try:
-        
         profile = UserProfile.objects.get(user=request.user)
         role = profile.role
         context = {}
@@ -33,10 +34,10 @@ def home(request):
         context = RequestContext(request, context)
         if (role == 'patient'):
             return view_patient(request, request.user.id)
-        
+
         return render_to_response("home.html", context)
 
-    except: 
+    except:
         traceback.print_exc()
         if request.user.is_superuser:
             context = {}
@@ -44,12 +45,11 @@ def home(request):
             context = RequestContext(request, context)
             return render_to_response("home.html", context)
 
-            
         return HttpResponse('<script>setTimeout(function() { window.location = "/" }, 1000);</script> Waiting on manual approval')
-    
+
 @login_required
 def list_of_unregistered_users(request):
-    
+
     users = []
     for user in User.objects.all():
         try:
@@ -59,7 +59,7 @@ def list_of_unregistered_users(request):
     return HttpResponse(json.dumps(users), content_type="application/json")
 
 @login_required
-def register_users(request): 
+def register_users(request):
     for i in request.POST:
         try:
             user_profile = UserProfile(user=User.objects.get(id=i.split('_')[1]), role=request.POST[i])
@@ -80,7 +80,7 @@ def is_patient(user):
         return profile.role == 'patient'
     except:
         return False
-    
+
 
 @login_required
 def list_users(request):
@@ -90,11 +90,12 @@ def list_users(request):
 
 @login_required
 def view_patient(request, user_id):
+
     from pain.models import PainAvatar
     user = User.objects.get(id=user_id)
     if (not is_patient(user)):
         return HttpResponse("Error: this user isn't a patient")
-    context = {'patient': user, 'user_role': UserProfile.objects.get(user=request.user).role, 'patient_profile': UserProfile.objects.get(user=user), 'problems': Problem.objects.filter(patient=user)}
+    context = {'patient': user, 'user_role': UserProfile.objects.get(user=user_id).role, 'patient_profile': UserProfile.objects.get(user=user), 'problems': Problem.objects.filter(patient=user)}
     context.update({'pain_avatars': PainAvatar.objects.filter(patient=user).order_by('-datetime')})
     context = RequestContext(request, context)
     return render_to_response("patient.html", context)
@@ -143,7 +144,7 @@ def change_status(request):
 def submit_data_for_problem(request, problem_id):
     print request.POST
     problem = Problem.objects.get(id=problem_id)
-
+    objId=None
     if request.POST['type'] == 'note':
         problem = Problem.objects.get(id=problem_id)
         note = TextNote(by=UserProfile.objects.get(user=request.user).role, note=request.POST['data'])
@@ -165,12 +166,16 @@ def submit_data_for_problem(request, problem_id):
         problem.save()
     else:
         problem = Problem.objects.get(id=problem_id)
-        model = get_model('emr', request.POST['type'].capitalize()) 
-    
+        model = get_model('emr', request.POST['type'].capitalize())
+
         m = model(patient=problem.patient, problem=problem)
-        setattr(m,request.POST['type'], request.POST['data'] ) 
+        setattr(m,request.POST['type'], request.POST['data'] )
         m.save()
-    return HttpResponse('saved')
+        objId = m.id
+    if objId:
+        return HttpResponse(objId)
+    else:
+        return HttpResponse('saved')
 
 @login_required
 def add_problem(request, patient_id):
@@ -183,7 +188,7 @@ def add_problem(request, patient_id):
 @login_required
 def list_terms(request):
     query = request.GET['query']
-    
+
     import pymedtermino.snomedct
     #return [i.__dict__ for i in SNOMEDCT.search(query)]
     # only disorders and finding
@@ -224,16 +229,22 @@ def stop_encounter(request, encounter_id):
 
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
-@login_required 
+@login_required
 def save_event_summary(request):
-    event_summary = EventSummary(patient=User.objects.get(id=request.POST['patient_id']), summary=request.POST['summary'])
-    event_summary.save()
-    encounter = Encounter.objects.get(id=request.POST['encounter_id'])
-    ctype = ContentType.objects.get_for_model(event_summary)
-    encounter_event = EncounterEvent(content_type=ctype, object_id=event_summary.id)
-    encounter_event.save()
-    encounter.events.add(encounter_event)
-    encounter.save()
+    if request.POST['objname'] == 'goal':
+        goal = Goal.objects.get(id=request.POST['id'])
+        value = True if request.POST['value'] == 'true' else False
+        setattr(goal,'is_controlled', value)
+        goal.save()
+    else:
+        event_summary = EventSummary(patient=User.objects.get(id=request.POST['patient_id']), summary=request.POST['summary'])
+        event_summary.save()
+        encounter = Encounter.objects.get(id=request.POST['encounter_id'])
+        ctype = ContentType.objects.get_for_model(event_summary)
+        encounter_event = EncounterEvent(content_type=ctype, object_id=event_summary.id)
+        encounter_event.save()
+        encounter.events.add(encounter_event)
+        encounter.save()
     return HttpResponse('')
 
 def encounter(request, encounter_id):
@@ -247,9 +258,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.base import View
 from social_auth.exceptions import AuthFailed
 from social_auth.views import complete
- 
- 
-  
+
 class AuthComplete(View):
     def get(self, request, *args, **kwargs):
         backend = kwargs.pop('backend')
@@ -258,8 +267,8 @@ class AuthComplete(View):
         except AuthFailed:
             messages.error(request, "Your Google Apps domain isn't authorized for this app")
             return HttpResponseRedirect(reverse('home'))
- 
- 
+
+
 class LoginError(View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse(status=401)   
+        return HttpResponse(status=401)
